@@ -1,0 +1,34 @@
+#calc-body{
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: 500px;
+}
+#screen{
+    font-size: 35px;
+    background-color: palegoldenrod ;
+    border: 3px black solid;
+    height:50px;
+    box-sizing: border-box;
+    margin:15px;
+}
+#buttons{
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    
+}
+.row{
+    display: flex;
+    justify-content: space-around;
+}
+.button{
+    flex:1 0 25%;
+    font-size: x-large;
+    font-weight: bold;
+    padding:10px;
+    background-color: grey;
+}
+.numButton{
+    color:crimson;
+}
