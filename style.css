@@ -7,10 +7,13 @@
 #screen{
     font-size: 35px;
     background-color: palegoldenrod ;
-    border: 3px black solid;
+    border: 10px black solid;
     height:50px;
-    box-sizing: border-box;
-    margin:15px;
+    box-sizing:content-box;
+    margin:0px;
+    padding: 10px;
+    font-family: monospace ;
+
 }
 #buttons{
     display: flex;
