@@ -1,5 +1,6 @@
 const screen = document.querySelector('#screen');
 let toOperate=[];
+const debugOutput = document.querySelector('#debug');
 
 function operate(operator,a,b){
     if(operator=='add'){ return add(a,b);}
@@ -55,6 +56,9 @@ const numButtons=document.querySelectorAll('.numButton')
 numButtons.forEach(button => {
     button.addEventListener('click',(e) => {
         const num = e.target.id;
+        if(toOperate.length==2){
+            clearScreen();
+        }
         screen.textContent=`${screen.textContent}${num}`;
 
     });
@@ -66,14 +70,35 @@ operatorButtons.forEach(button => {
     button.addEventListener('click',(e) => {
         if(screen.textContent==''){return;}
         
-        toOperate.push( +Number( screen.textContent));
-        
-        toOperate=[equals()]
-
         const op = e.target.id;
-        toOperate.push(op);
+        if(toOperate.length==0){
+            toOperate.push( +Number( screen.textContent));
+            toOperate.push(op)
+            clearScreen();
+            console.table(toOperate);
+        }else if(toOperate.length==2){
+            toOperate.push( +Number( screen.textContent));
+            console.table(toOperate);
+        }
+
+        if(toOperate.length == 1){
+            clearScreen();
+            toOperate.push(op);
+            console.table(toOperate);
+
+            return;
+        }
+        if (toOperate.length==3){
+            toOperate=[equals()]
+            clearScreen();
+            screen.textContent=`${toOperate[0]} ${op}`;
+            toOperate.push(op);
+            console.table(toOperate);
+
+        }
+
         
-        clearScreen();
+        
     });
 });
 
@@ -85,7 +110,7 @@ clearButton.addEventListener('click',()=>{
 );
 const equalButton = document.querySelector('#equal');
 equalButton.addEventListener('click',function(){
-    if(screen.textContent!=='') {
+    if(screen.textContent!=='' && toOperate.length==2) {
         toOperate.push( +Number( screen.textContent))
     } else { return; }
 
@@ -93,6 +118,8 @@ equalButton.addEventListener('click',function(){
     clearScreen();
     toOperate=[answer];
     screen.textContent=answer;
+    console.table(toOperate);
+
 });
 
 
