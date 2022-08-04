@@ -1,3 +1,6 @@
+//TODO:add negative numbers
+//TODO:add decimal handling
+
 const screen = document.querySelector('#screen');
 let toOperate=[];
 const debugOutput = document.querySelector('#debug');
